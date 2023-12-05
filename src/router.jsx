@@ -1,9 +1,9 @@
 import * as React from "react";
 import {
-  createBrowserRouter,
-  RouterProvider,
-  Route,
-  Link,
+    createBrowserRouter,
+    RouterProvider,
+    Route,
+    Link,
 } from "react-router-dom";
 import ContentLayout from "./layouts/ContentLayout";
 import GuestLayout from "./layouts/GuestLayout";
@@ -17,25 +17,25 @@ import About from "./views/about";
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <ContentLayout/>,
+        element: <ContentLayout />,
         children: [
             {
                 path: "/",
-                element: <Home/>,
+                element: <Home />,
             },
             {
                 path: "/about",
-                element: <About/>,
+                element: <About />,
             },
         ],
     },
     {
         path: "/",
-        element: <GuestLayout/>,
+        element: <GuestLayout />,
         children: [
             {
                 path: "/auth",
-                element: <Login/>,
+                element: <Login />,
             }
         ],
     }
