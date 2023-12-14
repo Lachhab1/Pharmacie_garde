@@ -13,6 +13,8 @@ import Login from "./views/login";
 //views
 import Home from "./views/home";
 import About from "./views/about";
+import Medic from "./views/medic";
+import AddMedicament from "./components/medicament/add";
 
 const router = createBrowserRouter([
     {
@@ -27,6 +29,19 @@ const router = createBrowserRouter([
                 path: "/about",
                 element: <About />,
             },
+            {
+                path: "/",
+                children: [
+                    {
+                        path: "/medic",
+                        element: <Medic />,
+                    },
+                    {
+                        path: "/medic/add",
+                        element: <AddMedicament />,
+                    }
+                ],
+            }
         ],
     },
     {

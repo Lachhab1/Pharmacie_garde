@@ -2,6 +2,7 @@ import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 
+
 const navigation = [
     { name: 'Dashboard', href: '#', current: true },
     { name: 'Team', href: '#', current: false },
@@ -15,7 +16,7 @@ function classNames(...classes) {
 
 export default function TopBar() {
     return (
-        <Disclosure as="nav" className="bg-slate-200 rounded-sm shadow-slate-300">
+        <Disclosure as="nav" className="bg-topbar rounded-sm">
             {({ open }) => (
                 <>
                     <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -25,7 +26,7 @@ export default function TopBar() {
                             <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                                 <button
                                     type="button"
-                                    className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                                    className="relative rounded-full focus:outline-none hover:border-2 hover:border-gray-600 focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                                 >
                                     <span className="absolute -inset-1.5" />
                                     <span className="sr-only">View notifications</span>
@@ -34,11 +35,11 @@ export default function TopBar() {
 
                                 <Menu as="div" className="relative ml-3">
                                     <div>
-                                        <Menu.Button className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                                        <Menu.Button className="relative flex rounded-full border-gray-800 border-2 bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-1 focus:ring-offset-gray-800">
                                             <span className="absolute -inset-1.5" />
                                             <span className="sr-only">Open user menu</span>
                                             <img
-                                                className="h-8 w-8 rounded-full"
+                                                className="h-8 w-8 inline-block rounded-full ring-2 ring-white"
                                                 src="/src/images/profile.png"
                                                 alt=""
                                             />
