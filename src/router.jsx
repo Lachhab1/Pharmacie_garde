@@ -15,6 +15,9 @@ import Home from "./views/home";
 import About from "./views/about";
 import Medic from "./views/medic";
 import AddMedicament from "./components/medicament/add";
+import EditMedicament from "./components/medicament/edit";
+import ClientLayout from "./layouts/clientLayouy";
+import Order from "./views/order";
 
 const router = createBrowserRouter([
     {
@@ -37,11 +40,25 @@ const router = createBrowserRouter([
                         element: <Medic />,
                     },
                     {
-                        path: "/medic/add",
+                        path: "/medic/new",
                         element: <AddMedicament />,
-                    }
+                    },
+                    {
+                        path: "/medic/:code",
+                        element: <EditMedicament />,
+                    },
                 ],
             }
+        ],
+    },
+    {
+        path: "/",
+        element: <ClientLayout />,
+        children: [
+            {
+                path: "/order",
+                element: <Order />,
+            },
         ],
     },
     {

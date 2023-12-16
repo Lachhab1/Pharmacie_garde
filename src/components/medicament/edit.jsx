@@ -1,13 +1,13 @@
 import React from 'react'
 import { Button, Input, Textarea } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
-export default function AddMedicament() {
+export default function EditMedicament() {
     return (
         <div className='flex flex-col'>
             <div className='flex flex-row justify-between'>
                 <div className='flex flex-col mx-auto mb-4'>
-                    <div className='font-extrabold text-2xl'>Add Medicament</div>
-                    <div className='text-sm text-gray-400'>Add new medicament</div>
+                    <div className='font-extrabold text-2xl'>Edit Medicament</div>
+                    <div className='text-sm text-gray-400'>Edit the medicament</div>
                 </div>
                 <div className='flex flex-row'>
                     <Button
