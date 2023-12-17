@@ -28,7 +28,7 @@ export default function MapComponent(props) {
 
     return (
         <APIProvider apiKey={"AIzaSyC6yiyqoqG2Tm1C-uEPAFDAVZCh4BGJ5xk"}>
-            <div style={{ height: "100vh", width: "100%" }}>
+            <div style={{ height: "300px", width: "60%" }} className="mx-auto">
                 <Map zoom={9} center={initialPosition} onClick={onMapClick}>
                     <Marker position={initialPosition} >
                         <Pin />

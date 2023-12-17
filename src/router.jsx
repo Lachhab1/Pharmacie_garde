@@ -18,7 +18,9 @@ import AddMedicament from "./components/medicament/add";
 import EditMedicament from "./components/medicament/edit";
 import ClientLayout from "./layouts/clientLayouy";
 import Order from "./views/order";
-import Garde from "./views/garde";
+import AddPharmacy from "./components/pharmacy/add";
+import Pharmacy from "./views/pharmacy";
+import EditPharmacy from "./components/pharmacy/edit";
 
 const router = createBrowserRouter([
     {
@@ -34,8 +36,21 @@ const router = createBrowserRouter([
                 element: <About />,
             },
             {
-                path: "/gar",
-                element: <Garde />,
+                path: "/",
+                children: [
+                    {
+                        path: "/pharmacy",
+                        element: <Pharmacy />,
+                    },
+                    {
+                        path: "/pharmacy/new",
+                        element: <AddPharmacy />,
+                    },
+                    {
+                        path: "/pharmacy/:code",
+                        element: <EditPharmacy />,
+                    },
+                ],
             },
             {
                 path: "/",

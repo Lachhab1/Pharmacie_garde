@@ -6,23 +6,6 @@ import { TrashIcon, PencilSquareIcon } from "@heroicons/react/24/solid";
 
 export function TableMed({ table_head, table_rows }) {
     //add action button to table rows
-    table_rows = table_rows.map((row) => {
-        row.action = (
-            <>
-                <button className="bg-primary rounded-md text-white font-bold px-3 py-2 m-2">
-                    <Link to={`/medic/${row.code}`}>
-                        <PencilSquareIcon className="h-5 w-5" />
-                    </Link>
-                </button>
-                <button className="bg-red-500 rounded-md text-white font-bold px-3 py-2 m-2">
-                    <TrashIcon className="h-5 w-5" />
-                </button>
-            </>
-        );
-        return row;
-    });
-
-
     return (
         <div className="overflow-x-auto">
             <table className="items-center w-full bg-transparent border-collapse shadow-none">
