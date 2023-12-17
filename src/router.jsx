@@ -18,6 +18,7 @@ import AddMedicament from "./components/medicament/add";
 import EditMedicament from "./components/medicament/edit";
 import ClientLayout from "./layouts/clientLayouy";
 import Order from "./views/order";
+import Garde from "./views/garde";
 
 const router = createBrowserRouter([
     {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
             {
                 path: "/about",
                 element: <About />,
+            },
+            {
+                path: "/gar",
+                element: <Garde />,
             },
             {
                 path: "/",
