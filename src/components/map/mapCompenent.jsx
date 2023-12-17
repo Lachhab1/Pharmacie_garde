@@ -6,7 +6,6 @@ export default function MapComponent(props) {
     const [open, setOpen] = useState(false);
     const [clickPosition, setClickPosition] = useState(null);
     const [markerPosition, setMarkerPosition] = useState(initialPosition);
-
     const onMapClick = (event) => {
         // console.log("event", event.detail.latLng.lng);
         if (event && event.detail && event.detail.latLng) {
