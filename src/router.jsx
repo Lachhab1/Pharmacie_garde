@@ -28,6 +28,7 @@ import Garde from "./components/pharmacyGarde/gard";
 //imports for client
 import ViewGarde from "./components/garde-client/index";
 import Error from "./views/erro404";
+import MapGard from "./components/garde-client/mapGard";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -100,6 +101,10 @@ const router = createBrowserRouter([
             {
                 path: "/gard-client",
                 element: <ViewGarde />,
+            },
+            {
+                path: "/map-gard",
+                element: <MapGard />,
             },
         ],
     },

@@ -11,6 +11,7 @@ export default function SidebarClient() {
     const Menu = [
         { name: "Dashboard", icon: "/src/assets/icons8-tableau-de-bord-64.png", link: "/home-client" },
         { name: "Garde", icon: "/src/assets/icons8-position-64.png", link: "/gard-client" },
+        { name: "Position Garde", icon: "/src/assets/icons8-carte-32.png", link: "/map-gard" },
         // { name: "About", icon: "/src/assets/icons8-à-propos-de-48.png", link: "/about" },
     ]
 
