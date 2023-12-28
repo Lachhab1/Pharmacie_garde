@@ -12,7 +12,7 @@ export default function Sidebar() {
         { name: "Dashboard", icon: "/src/assets/icons8-tableau-de-bord-64.png", link: "/" },
         { name: "Medicaments", icon: "/src/assets/icons8-capsule-91.png", link: "/medic" },
         { name: "Livraisons", icon: "/src/assets/icons8-livraison-100.png", link: "/liv" },
-        { name: "Garde", icon: "/src/assets/icons8-position-64.png", link: "/gar" },
+        { name: "Garde", icon: "/src/assets/icons8-position-64.png", link: "/gard" },
         { name: "Pharmacy", icon: "/src/assets/icons8-bâtiment-64.png", link: "/pharmacy" },
         // { name: "About", icon: "/src/assets/icons8-à-propos-de-48.png", link: "/about" },
     ]

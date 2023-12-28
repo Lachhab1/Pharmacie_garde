@@ -21,6 +21,7 @@ import Order from "./views/order";
 import AddPharmacy from "./components/pharmacy/add";
 import Pharmacy from "./views/pharmacy";
 import EditPharmacy from "./components/pharmacy/edit";
+import Garde from "./components/pharmacyGarde/gard";
 
 const router = createBrowserRouter([
     {
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
                         element: <EditPharmacy />,
                     },
                 ],
+            },
+            {
+                path: "/gard",
+                element: <Garde />,
             },
             {
                 path: "/",

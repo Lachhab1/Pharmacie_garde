@@ -77,6 +77,10 @@ export default function ContentLayout() {
             path: "/order/:code",
             name: "Edit Order"
         },
+        {
+            path: "/gard",
+            name: "Pharmacy Garde"
+        }
     ]
     const location = useLocation();
     var replaced = location.pathname.slice(1).replace("_", " ").replaceAll("/", " ");

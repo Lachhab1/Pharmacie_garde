@@ -6,7 +6,7 @@ export default function FormLogin() {
                 <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                     <img
                         className="mx-auto h-10 w-auto"
-                        src="/src/assets/icons8-pharmacie-boutique-48.png"
+                        src="/src/assets/icons8-pharmacie-icon-3.png"
                         alt="Your Company"
                     />
                     <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
@@ -38,7 +38,7 @@ export default function FormLogin() {
                                     Password
                                 </label>
                                 <div className="text-sm">
-                                    <a href="#" className="font-semibold text-teal-600 hover:text-teal-500">
+                                    <a href="#" className="font-semibold text-primary">
                                         Forgot password?
                                     </a>
                                 </div>
@@ -58,7 +58,7 @@ export default function FormLogin() {
                         <div>
                             <button
                                 type="submit"
-                                className="flex w-full justify-center rounded-md bg-teal-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-teal-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600"
+                                className="flex w-full justify-center rounded-md bg-primary px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-teal-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600"
                             >
                                 <Link to="/">Sign in</Link>
                             </button>
