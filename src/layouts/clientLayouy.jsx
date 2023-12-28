@@ -11,13 +11,14 @@ import {
     Typography,
     Button,
 } from "@material-tailwind/react";
+import SidebarClient from '../components/sidebar/sidebarClient';
 
 
 export default function ClientLayout() {
     const { isAuth } = UseStateContext();
     return (
-        <div className='flex'>
-            <Sidebar />
+        <div className='flex min-h-screen'>
+            <SidebarClient />
             <div className="flex-1 flex flex-col">
                 <TopBar />
                 <div className='ms-12 flex flex-col'>

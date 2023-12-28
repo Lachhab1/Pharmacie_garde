@@ -4,6 +4,7 @@ import {
     RouterProvider,
     Route,
     Link,
+    Navigate,
 } from "react-router-dom";
 import ContentLayout from "./layouts/ContentLayout";
 import GuestLayout from "./layouts/GuestLayout";
@@ -23,6 +24,10 @@ import Pharmacy from "./views/pharmacy";
 import EditPharmacy from "./components/pharmacy/edit";
 import Garde from "./components/pharmacyGarde/gard";
 
+
+//imports for client
+import ViewGarde from "./components/garde-client/index";
+import Error from "./views/erro404";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -30,6 +35,10 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/",
+                element: <Navigate to="/home" />,
+            },
+            {
+                path: "/home",
                 element: <Home />,
             },
             {
@@ -81,8 +90,16 @@ const router = createBrowserRouter([
         element: <ClientLayout />,
         children: [
             {
+                path: "/home-client",
+                element: <Home />,
+            },
+            {
                 path: "/order",
                 element: <Order />,
+            },
+            {
+                path: "/gard-client",
+                element: <ViewGarde />,
             },
         ],
     },
@@ -95,6 +112,10 @@ const router = createBrowserRouter([
                 element: <Login />,
             }
         ],
+    },
+    {
+        path: "*",
+        element: <Error />,
     }
 ]);
 export default router;

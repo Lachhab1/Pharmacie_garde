@@ -2,18 +2,15 @@ import flecheRight from "/src/assets/icons8-flèche-droite-color-32.png"
 import logo from "/src/assets/icons8-pharmacie-icon-3.png"
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-export default function Sidebar() {
+export default function SidebarClient() {
     const [isOpen, setIsOpen] = useState(false)
     const toggleSidebar = () => {
         setIsOpen(!isOpen)
         console.log(isOpen)
     }
     const Menu = [
-        { name: "Dashboard", icon: "/src/assets/icons8-tableau-de-bord-64.png", link: "/home" },
-        { name: "Medicaments", icon: "/src/assets/icons8-capsule-91.png", link: "/medic" },
-        { name: "Livraisons", icon: "/src/assets/icons8-livraison-100.png", link: "/liv" },
-        { name: "Garde", icon: "/src/assets/icons8-position-64.png", link: "/gard" },
-        { name: "Pharmacy", icon: "/src/assets/icons8-bâtiment-64.png", link: "/pharmacy" },
+        { name: "Dashboard", icon: "/src/assets/icons8-tableau-de-bord-64.png", link: "/home-client" },
+        { name: "Garde", icon: "/src/assets/icons8-position-64.png", link: "/gard-client" },
         // { name: "About", icon: "/src/assets/icons8-à-propos-de-48.png", link: "/about" },
     ]
 

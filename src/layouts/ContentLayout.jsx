@@ -18,6 +18,10 @@ export default function ContentLayout() {
     const { code } = useParams();
     const routName = [
         {
+            path: "/home",
+            name: "Home"
+        },
+        {
             path: "/",
             name: "Home"
         },

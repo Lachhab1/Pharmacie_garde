@@ -3,9 +3,11 @@ import { Navigate, Outlet } from "react-router-dom";
 import { UseStateContext } from "../context/ContextProvider.jsx";
 
 export default function GuestLayout() {
-    const { isAuth } = UseStateContext();
-    if (isAuth) {
-        return <Navigate to="/" />;
+    const { isAuth, role } = UseStateContext();
+    if (isAuth && role == "admin") {
+        return <Navigate to="home" />;
+    } else if (isAuth && role == "client") {
+        return <Navigate to="home-client" />;
     }
     return (
         //center the content
