@@ -16,6 +16,8 @@ const stateContext = createContext({
     errors: null,
     setUser: () => { },
     setToken: () => { },
+    sideOpen: false,
+    setsideOpen: () => { }
 })
 
 export const ContextProvider = ({ children }) => {
@@ -25,6 +27,7 @@ export const ContextProvider = ({ children }) => {
     const [token, setToken] = useState(null)
     const [errors, setErrors] = useState([])
     const [notification, setNotification] = useState(null)
+    const [sideOpen, setsideOpen] = useState(false)
     const login = ({ email, password }) => {
         if (email == "admin" && password === "admin") {
             setIsAuth(true)
@@ -49,9 +52,14 @@ export const ContextProvider = ({ children }) => {
         setToken(null)
         setErrors([])
     }
+    useEffect(() => {
+        console.log("sideOpen: " + sideOpen)
+    }, [sideOpen]
+    )
+
 
     return (
-        <stateContext.Provider value={{ isAuth, setIsAuth, role, login, logout, errors, setErrors }}>
+        <stateContext.Provider value={{ isAuth, setIsAuth, role, login, logout, errors, setErrors, sideOpen, setsideOpen }}>
             {children}
         </stateContext.Provider>
     )

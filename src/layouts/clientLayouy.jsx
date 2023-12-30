@@ -12,6 +12,7 @@ import {
     Button,
 } from "@material-tailwind/react";
 import SidebarClient from '../components/sidebar/sidebarClient';
+import TopBarClient from '../components/topbar/topbarClient';
 
 
 export default function ClientLayout() {
@@ -20,7 +21,7 @@ export default function ClientLayout() {
         <div className='flex min-h-screen'>
             <SidebarClient />
             <div className="flex-1 flex flex-col">
-                <TopBar />
+                <TopBarClient />
                 <div className='ms-12 flex flex-col'>
                     <div className='mt-4 font-extrabold text-2xl bg-transparent'></div>
                     <Card className='w-10/12 m-auto p-2 shadow-lg h-fit mt-4'>
