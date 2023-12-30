@@ -18,18 +18,18 @@ export default function Sidebar() {
     ]
 
     return (
-        <div className={`bg-primary relative duration-300 pt-8 p-5 ${isOpen ? "w-72" : "w-20"}`}>
+        <div className={`bg-primary relative duration-300 pt-8 p-5 ${isOpen ? "w-72" : "w-20"}`} >
             <img src={flecheRight} alt="arrow" className={`w-7 absolute cursor-pointer rounded-full -right-3 top-9 hover:border-cyan-500 ${isOpen ? "rotate-180 active:border-b-neutral-500 hover:border-b-neutral-50 border-2" : "border-0"}`} onClick={toggleSidebar} />
             <div className="flex gap-x-4 items-center">
-                <img src={logo} alt="logo" className="cursor-pointer duration-500 w-10" />
-                <h1 className={`text-white origin-left font-medium duration-300 text-3xl ${!isOpen && "scale-0"}`}>Pharmacie</h1>
+                <img src={logo} alt="logo" className="cursor-pointer duration-500 w-10" key={1} />
+                <h1 className={`text-white origin-left font-medium duration-300 text-3xl ${!isOpen && "scale-0"}`} key="2">Pharmacie</h1>
             </div>
             <div className={`flex flex-col gap-y-5 mt-10`} style={{ maxHeight: "calc(100% - 200px)", overflowY: "auto" }}>
                 {/* Menu items */}
                 {Menu.map((item, index) => {
                     return (
-                        <Link to={item.link}>
-                            <div key={index} className="flex gap-x-4 items-center cursor-pointer py-2 hover:bg-gray-200 hover:bg-opacity-25 hover:rounded-md hover:text-secondary-200">
+                        <Link to={item.link} key={index}>
+                            <div className="flex gap-x-4 items-center cursor-pointer py-2 hover:bg-gray-200 hover:bg-opacity-25 hover:rounded-md hover:text-secondary-200">
                                 <img src={item.icon} alt="icon" className="w-8 ps-2" />
                                 <h1 className={`text-white font-medium text-lg ${!isOpen && "hidden"}`}>
                                     {item.name}

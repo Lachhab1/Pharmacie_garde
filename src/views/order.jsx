@@ -4,7 +4,6 @@ import Side from '../components/shop/sideShop'
 import { UseStateContext } from '../context/ContextProvider'
 export default function Order() {
     const [open, setOpen] = useState(false)
-    const { sideOpen, setsideOpen } = UseStateContext();
     const medecine = {
         name: 'Zip Tote Basket',
         price: '$220',
@@ -18,7 +17,8 @@ export default function Order() {
         //pahramacy products
         {
             id: 1,
-            name: 'Paracetamol',
+            name: 'Doliprane',
+            quantity: 9,
             href: '#',
             price: '2000',
             imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
@@ -28,6 +28,7 @@ export default function Order() {
         {
             id: 2,
             name: 'Paracetamol',
+            quantity: 2,
             href: '#',
             price: '2000',
             imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg',
@@ -36,7 +37,8 @@ export default function Order() {
         },
         {
             id: 3,
-            name: 'Paracetamol',
+            name: 'Pomada Safra',
+            quantity: 6,
             href: '#',
             price: '2000',
             imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-03.jpg',
@@ -45,7 +47,8 @@ export default function Order() {
         },
         {
             id: 4,
-            name: 'Paracetamol',
+            name: 'Aspirine',
+            quantity: 2,
             href: '#',
             price: '2000',
             imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg',
@@ -54,6 +57,7 @@ export default function Order() {
         {
             id: 5,
             name: 'Paracetamol',
+            quantity: 2,
             href: '#',
             price: '2000',
             imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-05.jpg',
@@ -62,7 +66,8 @@ export default function Order() {
         },
         {
             id: 6,
-            name: 'Paracetamol',
+            name: 'Ryomidol',
+            quantity: 2,
             href: '#',
             price: '2000',
             imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-06.jpg',
@@ -71,16 +76,18 @@ export default function Order() {
         },
         {
             id: 7,
-            name: 'Paracetamol',
+            name: 'Juvamine',
             href: '#',
             price: '2000',
+            quantity: 1,
             imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-07.jpg',
             imageAlt: 'Paracetamol',
             description: "Medecine for headache and fever not requested by kids"
         },
         {
             id: 8,
-            name: 'Paracetamol',
+            name: 'Lumirelax',
+            quantity: 1,
             href: '#',
             price: '2000',
             imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-08.jpg',
@@ -95,8 +102,9 @@ export default function Order() {
             <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
                 <h2 className="text-xl font-semibold mb-4">Medicaments</h2>
                 <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-                    {products.map((product) => (
-                        <>
+                    {products.map((product, index) => (
+                        product.quantity > 0 &&
+                        <div key={index}>
                             <a key={product.id} href={product.href} className="group" >
                                 <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
                                     <img
@@ -113,10 +121,9 @@ export default function Order() {
                                 <p className="mt-1 text-lg font-medium text-gray-900">{product.price}</p>
                             </a>
                             <QuickView open={open} setOpen={setOpen} medecine={selectedProduct} />
-                        </>
+                        </div>
                     ))}
                 </div>
-                <Side sideOpen={sideOpen} setsideOpen={setsideOpen} />
             </div>
         </div>
     )

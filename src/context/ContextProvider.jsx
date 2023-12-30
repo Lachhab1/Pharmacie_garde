@@ -17,7 +17,10 @@ const stateContext = createContext({
     setUser: () => { },
     setToken: () => { },
     sideOpen: false,
-    setsideOpen: () => { }
+    setsideOpen: () => { },
+    panier: [],
+    addToPanier: () => { },
+    removeFromPanier: () => { },
 })
 
 export const ContextProvider = ({ children }) => {
@@ -56,10 +59,26 @@ export const ContextProvider = ({ children }) => {
         console.log("sideOpen: " + sideOpen)
     }, [sideOpen]
     )
-
+    //panier things
+    const [panier, setPanier] = useState(localStorage.getItem("panier") ? JSON.parse(localStorage.getItem("panier")) : []);
+    const addToPanier = (product) => {
+        setPanier([...panier, product]);
+    };
+    const removeFromPanier = (product) => {
+        let newPanier = panier.filter((item) => item.id != product.id)
+        setPanier(newPanier)
+        localStorage.removeItem("panier")
+        localStorage.setItem("panier", JSON.stringify(newPanier))
+    }
+    useEffect(() => {
+        setPanier(JSON.parse(localStorage.getItem("panier")))
+    }, [localStorage.getItem("panier")])
+    useEffect(() => {
+        localStorage.setItem("panier", JSON.stringify(panier));
+    }, [panier])
 
     return (
-        <stateContext.Provider value={{ isAuth, setIsAuth, role, login, logout, errors, setErrors, sideOpen, setsideOpen }}>
+        <stateContext.Provider value={{ isAuth, setIsAuth, role, login, logout, errors, setErrors, sideOpen, setsideOpen, panier, addToPanier, removeFromPanier }}>
             {children}
         </stateContext.Provider>
     )

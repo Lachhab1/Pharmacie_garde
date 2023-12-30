@@ -27,7 +27,7 @@ export default function SidebarClient() {
                 {/* Menu items */}
                 {Menu.map((item, index) => {
                     return (
-                        <Link to={item.link}>
+                        <Link to={item.link} key={index}>
                             <div key={index} className="flex gap-x-4 items-center cursor-pointer py-2 hover:bg-gray-200 hover:bg-opacity-25 hover:rounded-md hover:text-secondary-200">
                                 <img src={item.icon} alt="icon" className="w-8 ps-2" />
                                 <h1 className={`text-white font-medium text-lg ${!isOpen && "hidden"}`}>

@@ -1,11 +1,14 @@
 import { Fragment, useState } from 'react'
 import { Dialog, RadioGroup, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/20/solid'
+import { UseStateContext } from '../../context/ContextProvider'
+
 
 
 
 
 export default function QuickView({ open, setOpen, medecine }) {
+    const { addToPanier } = UseStateContext();
     return (
         <Transition.Root show={open} as={Fragment}>
             <Dialog as="div" className="fixed z-10 inset-0 overflow-y-auto" onClose={setOpen}>
@@ -77,8 +80,10 @@ export default function QuickView({ open, setOpen, medecine }) {
                                             <form>
                                                 <div className="mt-6">
                                                     <button
-                                                        type="submit"
                                                         className="w-full bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500"
+                                                        onClick={() => {
+                                                            addToPanier(medecine)
+                                                        }}
                                                     >
                                                         Add to bag
                                                     </button>

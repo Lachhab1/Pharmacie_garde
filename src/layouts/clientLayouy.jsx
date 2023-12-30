@@ -13,10 +13,14 @@ import {
 } from "@material-tailwind/react";
 import SidebarClient from '../components/sidebar/sidebarClient';
 import TopBarClient from '../components/topbar/topbarClient';
+import Side from '../components/shop/sideShop';
+import { useState } from 'react';
+
+
 
 
 export default function ClientLayout() {
-    const { isAuth } = UseStateContext();
+    const { isAuth, sideOpen, setsideOpen } = UseStateContext();
     return (
         <div className='flex min-h-screen'>
             <SidebarClient />
@@ -29,6 +33,7 @@ export default function ClientLayout() {
                             <Outlet />
                         </CardBody>
                     </Card>
+                    <Side sideOpen={sideOpen} setsideOpen={setsideOpen} />
                 </div>
             </div>
         </div>
