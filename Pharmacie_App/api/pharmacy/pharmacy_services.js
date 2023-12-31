@@ -86,6 +86,35 @@ module.exports = {
       }
     );
   },
+  getPharmaciesByDistance: (latReference, lonReference, callBack) => {
+    pool.query(
+      `SELECT
+          id_p,
+          name_p,
+          address_u,
+          latitude,
+          longitude,
+          phone_p,
+          6371 * 2 * ASIN(
+              SQRT(
+                  POW(SIN(RADIANS(latitude - ?) / 2), 2) +
+                  COS(RADIANS(?)) * COS(RADIANS(latitude)) *
+                  POW(SIN(RADIANS(longitude - ?) / 2), 2)
+              )
+          ) AS distance
+      FROM
+          pharmacy
+      ORDER BY
+          distance ASC`,
+      [latReference, latReference, lonReference],
+      (error, results, fields) => {
+        if (error) {
+          callBack(error);
+        }
+        return callBack(null, results);
+      }
+    );
+  },
   getPeriodes: (pharmacyId, callBack) => {
     pool.query(
       `SELECT pharmacy_garde.id_period, pharmacy_garde.id_p, periode_garde.start, periode_garde.end

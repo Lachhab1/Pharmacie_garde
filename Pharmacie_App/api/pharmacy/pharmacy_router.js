@@ -8,7 +8,8 @@ const {
   deletePharmacy,
   getPharmacyByName,
   getPharmacists ,
-  getPeriodes 
+  getPeriodes ,
+  getPharmaciesByDistance
 } = require("./pharmacy_controller");
 
 router.post("/", checkToken, createPharmacy);
@@ -19,5 +20,6 @@ router.patch("/", checkToken, updatePharmacy);
 router.delete("/:id", checkToken, deletePharmacy);
 router.get("/:id/pharmacists", checkToken, getPharmacists);
 router.get("/:id/periodes", checkToken, getPeriodes);
+router.get("/distance/:lat/:lon", checkToken, getPharmaciesByDistance);
 
 module.exports = router;
