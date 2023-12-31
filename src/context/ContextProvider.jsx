@@ -62,6 +62,19 @@ export const ContextProvider = ({ children }) => {
     //panier things
     const [panier, setPanier] = useState(localStorage.getItem("panier") ? JSON.parse(localStorage.getItem("panier")) : []);
     const addToPanier = (product) => {
+        if (panier.find((item) => item.id == product.id)) {
+            let newPanier = panier.map((item) => {
+                if (item.id == product.id) {
+                    return { ...item, quantity: item.quantity + 1 }
+                }
+                return item
+            })
+            setPanier(newPanier)
+            localStorage.removeItem("panier")
+            localStorage.setItem("panier", JSON.stringify(newPanier))
+            return
+        }
+        product.quantity = 1;
         setPanier([...panier, product]);
     };
     const removeFromPanier = (product) => {

@@ -18,7 +18,8 @@ export default function Order() {
         {
             id: 1,
             name: 'Doliprane',
-            quantity: 9,
+            quantity: 0,
+            totalquantity: 10,
             href: '#',
             price: '2000',
             imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
@@ -28,7 +29,8 @@ export default function Order() {
         {
             id: 2,
             name: 'Paracetamol',
-            quantity: 2,
+            quantity: 0,
+            totalquantity: 6,
             href: '#',
             price: '2000',
             imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg',
@@ -38,7 +40,8 @@ export default function Order() {
         {
             id: 3,
             name: 'Pomada Safra',
-            quantity: 6,
+            quantity: 0,
+            totalquantity: 8,
             href: '#',
             price: '2000',
             imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-03.jpg',
@@ -48,7 +51,8 @@ export default function Order() {
         {
             id: 4,
             name: 'Aspirine',
-            quantity: 2,
+            quantity: 0,
+            totalquantity: 6,
             href: '#',
             price: '2000',
             imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg',
@@ -57,7 +61,8 @@ export default function Order() {
         {
             id: 5,
             name: 'Paracetamol',
-            quantity: 2,
+            quantity: 0,
+            totalquantity: 16,
             href: '#',
             price: '2000',
             imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-05.jpg',
@@ -67,7 +72,8 @@ export default function Order() {
         {
             id: 6,
             name: 'Ryomidol',
-            quantity: 2,
+            quantity: 0,
+            totalquantity: 9,
             href: '#',
             price: '2000',
             imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-06.jpg',
@@ -79,7 +85,8 @@ export default function Order() {
             name: 'Juvamine',
             href: '#',
             price: '2000',
-            quantity: 1,
+            quantity: 0,
+            totalquantity: 2,
             imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-07.jpg',
             imageAlt: 'Paracetamol',
             description: "Medecine for headache and fever not requested by kids"
@@ -87,7 +94,8 @@ export default function Order() {
         {
             id: 8,
             name: 'Lumirelax',
-            quantity: 1,
+            quantity: 0,
+            totalquantity: 2,
             href: '#',
             price: '2000',
             imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-08.jpg',
@@ -103,7 +111,7 @@ export default function Order() {
                 <h2 className="text-xl font-semibold mb-4">Medicaments</h2>
                 <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
                     {products.map((product, index) => (
-                        product.quantity > 0 &&
+                        product.totalquantity > 0 &&
                         <div key={index}>
                             <a key={product.id} href={product.href} className="group" >
                                 <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
