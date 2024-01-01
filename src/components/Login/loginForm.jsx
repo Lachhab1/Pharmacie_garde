@@ -57,7 +57,7 @@ export default function FormLogin() {
                                 <input
                                     id="email"
                                     name="email"
-                                    type="text"
+                                    type="email"
                                     autoComplete="email"
                                     required
                                     onChange={(e) => handleChangEmail(e)}
