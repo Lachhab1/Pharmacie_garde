@@ -52,7 +52,8 @@ const {
           return res.json({
             success: 1,
             message: "login successfully",
-            token: jsontoken
+            token: jsontoken,
+            data: results
           });
         } else {
           return res.json({

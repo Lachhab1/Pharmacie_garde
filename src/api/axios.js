@@ -1,11 +1,13 @@
 import axios from 'axios';
 const axiosCleint = axios.create({
-  baseURL: '#',
+  baseURL: 'http://localhost:8000/api',
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json',
+    
   },
 });
+
 axiosCleint.interceptors.request.use((config) => {
   config.headers.Authorization = `Bearer ${localStorage.getItem(
     'ACCESS_TOKEN'

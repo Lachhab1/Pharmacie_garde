@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { createContext, useEffect } from "react";
+import axios from "../api/axios";
 
 
 const stateContext = createContext({
@@ -27,26 +28,33 @@ export const ContextProvider = ({ children }) => {
     const [isAuth, setIsAuth] = useState(false)
     const [role, setRole] = useState('')
     const [user, setUser] = useState(null)
-    const [token, setToken] = useState(null)
+    const [token, _setToken] = useState(localStorage.getItem("ACCESS_TOKEN") ? localStorage.getItem("ACCESS_TOKEN") : null)
     const [errors, setErrors] = useState([])
     const [notification, setNotification] = useState(null)
     const [sideOpen, setsideOpen] = useState(false)
+    const setToken = (token) => {
+        _setToken(token);
+        if (token) {
+            localStorage.setItem("ACCESS_TOKEN", token);
+        } else {
+            localStorage.removeItem("ACCESS_TOKEN");
+        }
+    }
     const login = ({ email, password }) => {
-        if (email == "admin" && password === "admin") {
-            setIsAuth(true)
-            setRole("admin")
-            setUser({ name: "admin", email: "admin" })
-            setToken("token")
+        axios.post("/user/login", { email, password }).then((res) => {
+            if (res.data.success) {
+                setIsAuth(true)
+                setRole(res.data.data.role)
+                setUser(`${res.data.data.first_name} ${res.data.data.last_name}`)
+                setToken("secret")
+            }
+            else {
+                setErrors(res.data.errors)
+            }
         }
-        else if (email === "client" && password === "client") {
-            setIsAuth(true)
-            setRole("client")
-            setUser({ name: "client", email: "client" })
-            setToken("token")
-        }
-        else {
+        ).catch((err) => {
             setErrors(["email or password incorrect"])
-        }
+        })
     }
     const logout = () => {
         setIsAuth(false)
@@ -91,7 +99,7 @@ export const ContextProvider = ({ children }) => {
     }, [panier])
 
     return (
-        <stateContext.Provider value={{ isAuth, setIsAuth, role, login, logout, errors, setErrors, sideOpen, setsideOpen, panier, addToPanier, removeFromPanier }}>
+        <stateContext.Provider value={{ isAuth, token, setIsAuth, role, login, logout, errors, setErrors, sideOpen, setsideOpen, panier, addToPanier, removeFromPanier }}>
             {children}
         </stateContext.Provider>
     )

@@ -10,7 +10,7 @@ export default function Side({ sideOpen, setsideOpen }) {
     const [total, setTotal] = useState(0)
     useEffect(() => {
         let total = 0;
-        panier.forEach(product => {
+        panier?.forEach(product => {
             total += +product.price
         })
         setTotal(total)
@@ -61,7 +61,7 @@ export default function Side({ sideOpen, setsideOpen }) {
                                         <div className="mt-8">
                                             <div className="flow-root">
                                                 <ul role="list" className="-my-6 divide-y divide-gray-200">
-                                                    {panier.map((product) => (
+                                                    {panier?.map((product) => (
                                                         <li key={product.id} className="flex py-6">
                                                             <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                                                                 <img
