@@ -57,7 +57,7 @@ module.exports = {
   },
 
   updatePharmacy: (data, callBack) => {
-    const { id_p, id_pr, name_p, address_u, latitude, longitude, phone_p } = data;
+    const { id_p, name_p, address_u, latitude, longitude, phone_p } = data;
     pool.query(
       `UPDATE pharmacy SET  name_p=?, address_u=?, latitude=?, longitude=?, phone_p=? WHERE id_p = ?`,
       [name_p, address_u, latitude, longitude, phone_p, id_p],
