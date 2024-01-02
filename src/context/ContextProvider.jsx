@@ -46,7 +46,7 @@ export const ContextProvider = ({ children }) => {
                 setIsAuth(true)
                 setRole(res.data.data.role)
                 setUser(`${res.data.data.first_name} ${res.data.data.last_name}`)
-                setToken("secret")
+                setToken(res.data.token)
             }
             else {
                 setErrors(res.data.errors)

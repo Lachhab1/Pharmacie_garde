@@ -12,8 +12,8 @@ const {
       //  const id_m = uuidv1(); 
       
         pool.query(
-          `INSERT INTO medicines (id_m, name_m, description_m, price) VALUES (0, ?, ?, ?)`,
-          [id_m, name_m, description_m, price],
+          `INSERT INTO medicines (name_m, description_m, price) VALUES (?, ?, ?)`,
+          [name_m, description_m, price],
           (error, results, fields) => {
             if (error) {
               callBack(error);

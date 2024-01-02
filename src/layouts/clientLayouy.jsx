@@ -20,6 +20,9 @@ import { useState } from 'react';
 
 
 export default function ClientLayout() {
+    if (!localStorage.getItem('ACCESS_TOKEN')) {
+        return <Navigate to='/auth' />
+    }
     const { isAuth, sideOpen, setsideOpen } = UseStateContext();
     return (
         <div className='flex min-h-screen'>

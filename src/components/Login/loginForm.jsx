@@ -16,7 +16,7 @@ export default function FormLogin() {
         // setErrors([]);
         login({ email, password });
         console.log(errors);
-        if (errors.length = 0) {
+        if (errors && errors.length == 0) {
             setErrors([]);
             setEmail("");
             setPassword("");

@@ -14,6 +14,9 @@ import {
 
 
 export default function ContentLayout() {
+    if (!localStorage.getItem('ACCESS_TOKEN')) {
+        return <Navigate to='/auth' />
+    }
     const [name, setName] = useState('')
     const { code } = useParams();
     const routName = [
