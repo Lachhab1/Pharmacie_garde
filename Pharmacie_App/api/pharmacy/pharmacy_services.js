@@ -3,12 +3,11 @@ const { v4: uuidv4 } = require('uuid');
 
 module.exports = {
   createPharmacy: (data, callBack) => {
-    const { id_pr, name_p, address_u, latitude, longitude, phone_p } = data;
-    const id_p = uuidv4();
+    const { name_p, address_u, latitude, longitude, phone_p } = data;
 
     pool.query(
-      `INSERT INTO pharmacy (id_p, name_p, address_u, latitude, longitude, phone_p) VALUES (0, ?, ?, ?, ?, ?)`,
-      [id_p, name_p, address_u, latitude, longitude, phone_p],
+      `INSERT INTO pharmacy (name_p, address_u, latitude, longitude, phone_p) VALUES (?, ?, ?, ?, ?)`,
+      [name_p, address_u, latitude, longitude, phone_p],
       (error, results, fields) => {
         if (error) {
           callBack(error);
