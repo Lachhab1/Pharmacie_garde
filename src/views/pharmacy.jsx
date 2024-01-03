@@ -114,7 +114,7 @@ export default function Pharmacy() {
                     disabledClassName={""}
                     pageLinkClassName="text-white px-3 py-2 rounded-md shadow-lg border-2 m-2 bg-primary hover:bg-white hover:text-primary"
                     activeClassName={"text-black"}
-                    activeLinkClassName="bg-white rounded-md text-green-600 px-3 py-2 shadow-md border-2 m-2"
+                    activeLinkClassName="bg-white rounded-md text-green-600 px-3 py-2 shadow-md border-2 m-2 text-primary"
                 />
             </div>
         </>
