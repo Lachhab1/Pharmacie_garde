@@ -143,4 +143,68 @@ module.exports = {
       }
     );
   },
+getPharmacyDeGarde: (callBack) => {
+  pool.query(
+    `SELECT pharmacy.id_p, pharmacy.name_p, pharmacy_garde.startTime, pharmacy_garde.endTime,pharmacy.address_u, pharmacy.latitude, pharmacy.longitude, pharmacy.phone_p
+    FROM pharmacy
+    JOIN pharmacy_garde ON pharmacy.id_p = pharmacy_garde.id_p
+    WHERE pharmacy_garde.startTime <= NOW() AND pharmacy_garde.endTime >= NOW()
+    `,
+    (error, results, fields) => {
+      if (error) {
+        callBack(error);
+      }
+      return callBack(null, results);
+    }
+  );
+},
+getPharmacyDeGardeByDistance: (latReference, lonReference, callBack) => {
+  pool.query(
+    `SELECT
+        pharmacy.id_p,
+        pharmacy.name_p,
+        pharmacy_garde.startTime,
+        pharmacy_garde.endTime,
+        pharmacy.address_u,
+        pharmacy.latitude,
+        pharmacy.longitude,
+        pharmacy.phone_p,
+        6371 * 2 * ASIN(
+            SQRT(
+                POW(SIN(RADIANS(pharmacy.latitude - ?) / 2), 2) +
+                COS(RADIANS(?)) * COS(RADIANS(pharmacy.latitude)) *
+                POW(SIN(RADIANS(pharmacy.longitude - ?) / 2), 2)
+            )
+        ) AS distance
+    FROM
+        pharmacy
+    JOIN pharmacy_garde ON pharmacy.id_p = pharmacy_garde.id_p
+    WHERE
+        pharmacy_garde.startTime <= NOW() AND pharmacy_garde.endTime >= NOW()
+    ORDER BY
+        distance ASC`,
+    [latReference, latReference, lonReference],
+    (error, results, fields) => {
+      if (error) {
+        callBack(error);
+      }
+      return callBack(null, results);
+    }
+  );
+},
+  createGardePharmacy: (data, callBack) => {
+    const { id_p,startTime,endTime} = data;
+    console.log(data);
+    pool.query(
+      `INSERT INTO pharmacy_garde (id_p,startTime,endTime) VALUES (?, ?, ?)`,
+      [id_p,startTime, endTime],
+      (error, results, fields) => {
+        if (error) {
+          callBack(error);
+        }
+        return callBack(null, results);
+      }
+    );
+  }
+
 };

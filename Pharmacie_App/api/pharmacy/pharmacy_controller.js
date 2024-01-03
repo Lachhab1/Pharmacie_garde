@@ -4,7 +4,11 @@ const {
     getPharmacyById,
     updatePharmacy,
     deletePharmacy,
-    getPharmacyByName
+    getPharmacyByName,
+    getPharmacyDeGarde,
+    createGardePharmacy,
+    getPharmacyDeGardeByDistance,
+    getPeriodes,
   } = require("./pharmacy_services");
   //const { v4: uuidv4 } = require('uuid');
   
@@ -210,5 +214,54 @@ const {
           });
         });
       },
+      getGardePharmacieByDistance: (req, res) => {
+        const latReference = parseFloat(req.params.lat); // Use req.params.lat for latitude
+        const lonReference = parseFloat(req.params.lon); // Use req.params.lon for longitude
+      
+        if (isNaN(latReference) || isNaN(lonReference)) {
+          return res.status(400).json({
+            success: 0,
+            message: "Invalid latitude or longitude values"
+          });
+        }
+      
+        getPharmacyDeGardeByDistance(latReference, lonReference, (error, pharmacies) => {
+          if (error) {
+            console.error(error);
+            return res.status(500).json({
+              success: 0,
+              message: "Database connection error"
+            });
+          }
+      
+          if (!pharmacies || pharmacies.length === 0) {
+            return res.status(404).json({
+              success: 0,
+              message: "No pharmacies found within the specified distance"
+            });
+          }
+      
+          return res.status(200).json({
+            success: 1,
+            data: pharmacies
+          });
+        });
+      },
+      createGardePharmacy: (req, res) => {
+        const body = req.body;
+        createGardePharmacy(body, (err, results) => {
+          if (err) {
+            console.log(err);
+            return res.status(500).json({
+              success: 0,
+              message: "Database connection error"
+            });
+          }
+          return res.status(200).json({
+            success: 1,
+            data: results
+          });
+        });
+      }
   };
   
