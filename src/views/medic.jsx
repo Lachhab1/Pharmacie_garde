@@ -107,7 +107,7 @@ export default function Medic() {
                     previousLinkClassName={"text-green-600 border-primary border-0 rounded-md shadow-md mx-2 px-2 py-1 hover:bg-white hover:text-gray-800"}
                     nextLinkClassName={"text-green-600 border-primary border-0 rounded-md shadow-md mx-2 px-2 py-1 hover:bg-white hover:text-gray-800"}
                     disabledClassName={""}
-                    pageLinkClassName="text-white px-3 py-2 rounded-md shadow-lg border-2 m-2 bg-primary hover:bg-white hover:text-primary"
+                    pageLinkClassName="text-gray-300 px-3 py-2 rounded-md shadow-lg border-2 m-2 bg-primary hover:bg-white hover:text-primary"
                     activeClassName={"text-black"}
                     activeLinkClassName="bg-white rounded-md text-green-600 px-3 py-2 shadow-md border-2 m-2 text-primary"
                 />

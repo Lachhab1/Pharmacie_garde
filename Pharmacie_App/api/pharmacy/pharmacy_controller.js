@@ -9,6 +9,7 @@ const {
     createGardePharmacy,
     getPharmacyDeGardeByDistance,
     getPeriodes,
+    deletePharmacyGarde
   } = require("./pharmacy_services");
   //const { v4: uuidv4 } = require('uuid');
   
@@ -249,6 +250,7 @@ const {
       },
       createGardePharmacy: (req, res) => {
         const body = req.body;
+        console.log(body);
         createGardePharmacy(body, (err, results) => {
           if (err) {
             console.log(err);
@@ -259,9 +261,31 @@ const {
           }
           return res.status(200).json({
             success: 1,
-            data: results
+            data: results,
           });
         });
-      }
+      },
+      deletePharmacyGarde : (req, res) => {
+        const id = req.params.id;
+        deletePharmacyGarde(id, (err, results) => {
+          if (err) {
+            console.log(err);
+            return res.status(500).json({
+              success: 0,
+              message: "Database connection error"
+            });
+          }
+          if (!results) {
+            return res.status(404).json({
+              success: 0,
+              message: "Pharmacy not found"
+            });
+          }
+          return res.status(200).json({
+            success: 1,
+            message: "Pharmacy deleted successfully"
+          });
+        });
+      },
   };
   

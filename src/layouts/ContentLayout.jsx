@@ -95,7 +95,7 @@ export default function ContentLayout() {
         setName(routName.filter((object) => object.path == location.pathname)[0].name)
     }, [location.pathname, name])
     return (
-        <div className='flex h-screen'>
+        <div className='flex min-h-screen'>
             <Sidebar />
             <div className="flex-1 flex flex-col">
                 <TopBar />

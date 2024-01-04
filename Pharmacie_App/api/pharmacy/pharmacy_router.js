@@ -12,6 +12,7 @@ const {
   getPharmaciesByDistance,
   getGardePharmacieByDistance,
   createGardePharmacy,
+  deletePharmacyGarde
 } = require("./pharmacy_controller");
 
 router.post("/", checkToken, createPharmacy);
@@ -26,5 +27,6 @@ router.get("/distance/:lat/:lon", checkToken, getPharmaciesByDistance);
 //get pharmacies de garde by distance
 router.get("/garde/:lat/:lon", checkToken, getGardePharmacieByDistance);
 router.post("/garde", checkToken, createGardePharmacy);
+router.delete("/garde/:id", checkToken, deletePharmacyGarde);
 
 module.exports = router;

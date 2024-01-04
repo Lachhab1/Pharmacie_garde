@@ -205,6 +205,17 @@ getPharmacyDeGardeByDistance: (latReference, lonReference, callBack) => {
         return callBack(null, results);
       }
     );
+  },
+  deletePharmacyGarde: (id, callBack) => {
+    pool.query(
+      `DELETE FROM pharmacy_garde WHERE id_period = ?`,
+      [id],
+      (error, results, fields) => {
+        if (error) {
+          callBack(error);
+        }
+        return callBack(null, results);
+      }
+    );
   }
-
 };
