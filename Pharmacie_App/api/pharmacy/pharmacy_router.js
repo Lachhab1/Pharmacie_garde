@@ -12,7 +12,9 @@ const {
   getPharmaciesByDistance,
   getGardePharmacieByDistance,
   createGardePharmacy,
-  deletePharmacyGarde
+  deletePharmacyGarde,
+  getPharmacyDeGarde,
+  getPharmacyExceptGarde
 } = require("./pharmacy_controller");
 
 router.post("/", checkToken, createPharmacy);
@@ -26,6 +28,8 @@ router.get("/:id/periodes", checkToken, getPeriodes);
 router.get("/distance/:lat/:lon", checkToken, getPharmaciesByDistance);
 //get pharmacies de garde by distance
 router.get("/garde/:lat/:lon", checkToken, getGardePharmacieByDistance);
+router.get("/garde/data", checkToken, getPharmacyDeGarde);
+router.get("/garde/notsettedGarde", checkToken, getPharmacyExceptGarde);
 router.post("/garde", checkToken, createGardePharmacy);
 router.delete("/garde/:id", checkToken, deletePharmacyGarde);
 

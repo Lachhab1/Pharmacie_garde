@@ -1,13 +1,13 @@
-import PharmImage from '../images/images.jpeg'
+import PharmImage from '../../images/images.jpeg'
 import { useState, useEffect } from 'react'
-import axios from "../api/axios";
-export default function PharmacyDetails(pharmacy) {
+import axios from "../../api/axios";
+export default function SettedGard(pharmacy) {
     const [isGarde, setIsGarde] = useState(false)
     const [showModal, setShowModal] = useState(false) // Add state for modal visibility
     const [openTime, setOpenTime] = useState('08:00:00') // Add state for open time
     const [closeTime, setCloseTime] = useState('21:00:00') // Add state for close time
-    const [selectedDate, setSelectedDate] = useState('') // Add state for selected date
-    const [guardEndDate, setGuardEndDate] = useState('') // Add state for guard end date
+    const [selectedDate, setSelectedDate] = useState(pharmacy?.pharmacy?.openDate) // Add state for selected date
+    const [guardEndDate, setGuardEndDate] = useState(pharmacy?.pharmacy?.closeDate) // Add state for guard end date
     const [idGard, setIdGard] = useState('') // Add state for guard end date
     const [inputError, setInputError] = useState(false) // Add state for input error
 
@@ -23,33 +23,16 @@ export default function PharmacyDetails(pharmacy) {
         setGuardEndDate(event.target.value) // Update guard end date state
     }
 
-    const sendData = async (e) => {
-        e.preventDefault();
-        if (selectedDate && guardEndDate) {
-            const res = await axios.post('/pharmacy/garde', {
-                id_p: pharmacy?.pharmacy?.code,
-                startTime: selectedDate + ' ' + openTime,
-                endTime: guardEndDate + ' ' + closeTime
-            }).catch((err) => {
-                console.log(err);
-            })
-            if (res.data.success) {
-                console.log(res.data);
-            }
-
+    const handleDeleteGarde = async (e) => {
+        const res = await axios.delete(`/pharmacy/garde/${pharmacy?.pharmacy?.id_period}`).catch((err) => {
+            console.log(err);
         }
-
-    }
-    const handleSetAsGarde = (e) => {
-        setIsGarde(!isGarde)
-        if (selectedDate && guardEndDate) {
-            sendData(e)
-            setShowModal(true) // Show modal when setting as garde
-        } else {
-            setInputError(true) // Set input error to true if start date or end date is not provided
+        )
+        if (res.data.success) {
+            console.log(res.data);
         }
-
     }
+
 
     return (
         <div className="w-1/2 mb-4  relative" >
@@ -67,7 +50,7 @@ export default function PharmacyDetails(pharmacy) {
                     <p className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
                         Address : {pharmacy?.pharmacy?.address}
                     </p>
-                    <p className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+                    <p className="mb-4 text-xs text-neutral-600 dark:text-neutral-200">
                         Tel: {pharmacy?.pharmacy?.phone}
                     </p>
                     <p className="text-xs text-neutral-500 dark:text-neutral-300">
@@ -94,10 +77,10 @@ export default function PharmacyDetails(pharmacy) {
                 </div>
             </div>
             <button
-                className={`absolute top-0 right-0 mt-2 p-2 bg-gray-500 rounded-lg text-white hover:bg-green-500`}
-                onClick={(e) => handleSetAsGarde(e)}
+                className={`absolute top-0 right-0 mt-2 p-2 bg-gray-500 rounded-lg text-white ${isGarde ? 'bg-green-500' : 'hover:bg-green-500'}`}
+                onClick={(e) => handleDeleteGarde(e)}
             >
-                Set as Garde
+                Remove as Garde
             </button>
             {showModal && (
                 <div className="fixed inset-0 flex items-center justify-center z-50">

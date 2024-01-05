@@ -143,21 +143,6 @@ module.exports = {
       }
     );
   },
-getPharmacyDeGarde: (callBack) => {
-  pool.query(
-    `SELECT pharmacy.id_p, pharmacy.name_p, pharmacy_garde.startTime, pharmacy_garde.endTime,pharmacy.address_u, pharmacy.latitude, pharmacy.longitude, pharmacy.phone_p
-    FROM pharmacy
-    JOIN pharmacy_garde ON pharmacy.id_p = pharmacy_garde.id_p
-    WHERE pharmacy_garde.startTime <= NOW() AND pharmacy_garde.endTime >= NOW()
-    `,
-    (error, results, fields) => {
-      if (error) {
-        callBack(error);
-      }
-      return callBack(null, results);
-    }
-  );
-},
 getPharmacyDeGardeByDistance: (latReference, lonReference, callBack) => {
   pool.query(
     `SELECT
@@ -210,6 +195,36 @@ getPharmacyDeGardeByDistance: (latReference, lonReference, callBack) => {
     pool.query(
       `DELETE FROM pharmacy_garde WHERE id_period = ?`,
       [id],
+      (error, results, fields) => {
+        if (error) {
+          callBack(error);
+        }
+        return callBack(null, results);
+      }
+    );
+  },
+  getPharmacyDeGarde : (callBack) => {
+    pool.query(
+      `SELECT pharmacy.id_p, pharmacy.name_p, pharmacy_garde.startTime, pharmacy_garde.endTime,pharmacy.address_u, pharmacy.phone_p,pharmacy_garde.id_period
+      FROM pharmacy JOIN pharmacy_garde ON pharmacy.id_p = pharmacy_garde.id_p
+      where  pharmacy_garde.endTime >= NOW()
+      `,
+      (error, results, fields) => {
+        if (error) {
+          callBack(error);
+        }
+        return callBack(null, results);
+      }
+    );
+  },
+  getPharmacyExceptGarde : (callBack) => {
+    //get pharmacy that not setted garde
+    pool.query(
+      `SELECT pharmacy.id_p, pharmacy.name_p, pharmacy_garde.startTime, pharmacy_garde.endTime,pharmacy.address_u, pharmacy.phone_p
+      FROM pharmacy
+      LEFT JOIN pharmacy_garde ON pharmacy.id_p = pharmacy_garde.id_p
+      WHERE pharmacy_garde.id_p IS NULL;
+      `,
       (error, results, fields) => {
         if (error) {
           callBack(error);
