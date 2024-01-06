@@ -63,11 +63,11 @@ export default function Medic() {
     };
 
     const filteredData = medicaments.filter((medicine) => {
-        const { id_m, name_m, price, descriptio_m } = medicine;
+        const { id_m, name, price, descriptio_m } = medicine;
         const query = searchQuery.toLowerCase();
         return (
             String(id_m).toLowerCase().includes(query) ||
-            String(name_m).toLowerCase().includes(query) ||
+            String(name).toLowerCase().includes(query) ||
             String(price).toLowerCase().includes(query) ||
             String(descriptio_m).toLowerCase().includes(query)
         );
