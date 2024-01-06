@@ -6,14 +6,14 @@ const {
   
   module.exports = {
     createMedicine: (data, callBack) => {
-        const { name_m, description_m, price } = data;
+        const { name_m, description_m, price,path } = data;
         
         // Assuming you have a function to generate a unique identifier, replace 'generateUniqueId()' with your actual implementation
       //  const id_m = uuidv1(); 
       
         pool.query(
-          `INSERT INTO medicines (name_m, description_m, price) VALUES (?, ?, ?)`,
-          [name_m, description_m, price],
+          `INSERT INTO medicines (name_m, description_m, price,path) VALUES (?, ?, ?,?)`,
+          [name_m, description_m, price,path],
           (error, results, fields) => {
             if (error) {
               callBack(error);

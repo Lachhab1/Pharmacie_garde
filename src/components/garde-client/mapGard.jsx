@@ -36,7 +36,7 @@ export default function MapGard() {
             );
         });
         const fetchData = async () => {
-            const res = await axios.get(`/pharmacy/garde/${currentLocation.lat}/${currentLocation.lng}`).catch
+            const res = await axios.get(`/pharmacy/garde/${currentLocation?.lat || +center?.lat}/${currentLocation.lng || +center?.lng}`).catch
                 ((err) => {
                     console.log(err);
                 })

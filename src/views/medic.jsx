@@ -25,7 +25,17 @@ export default function Medic() {
     useEffect(() => {
         axios.get('/medicine').then((res) => {
             if (res.data.success) {
-                setMedicaments(res.data.data)
+                setMedicaments(
+                    res.data.data.map((row) => {
+                        return {
+                            id_m: row.id_m,
+                            name: row.name_m,
+                            price: row.price,
+                            description: row.description_m,
+                        };
+                    }
+                    )
+                )
             }
         }
         ).catch((err) => {

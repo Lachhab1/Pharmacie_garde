@@ -12,3 +12,55 @@ body {
     font-family: 'Poppins', sans-serif;
     background-color: #f5f5f5;
 }
+
+.cards-section {
+    margin-bottom: 4rem;
+}
+
+.cards {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4rem;
+}
+
+.cards {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    width: 290px;
+    height: 110px;
+    margin: 0px 10px;
+    position: relative;
+}
+
+.card-header {
+    border-radius: 10px 10px 0px 0px;
+    padding: 10px;
+}
+
+.card-header-name {
+    margin: 0px;
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+.card-body {
+    padding: 10px;
+    font-size: 2rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-body-text {
+    margin: 0px;
+}
+
+.card-icon {
+    color: #107B2A;
+}

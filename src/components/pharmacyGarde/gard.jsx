@@ -53,7 +53,7 @@ export default function Garde() {
 
     return (
         <>
-            <div className="flex flex-wrap justify-start">
+            <div className="flex flex-wrap justify-evenly">
                 {
                     data?.map((pharmacy, index) => {
                         return (
@@ -64,7 +64,7 @@ export default function Garde() {
                     })}
             </div>
             <div className="w-full h-2 bg-brown-900"></div>
-            <div className="flex flex-wrap justify-start">
+            <div className="flex flex-wrap justify-evenly">
                 {
                     pharmacyNotingarde?.map((pharmacy, index) => {
                         return (

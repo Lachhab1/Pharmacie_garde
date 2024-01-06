@@ -29,6 +29,9 @@ import Garde from "./components/pharmacyGarde/gard";
 import ViewGarde from "./components/garde-client/index";
 import Error from "./views/erro404";
 import MapGard from "./components/garde-client/mapGard";
+import Upload from "./components/imageUpload";
+import Checkout from "./components/shop/checkout";
+import HomeClient from "./views/home-client";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -82,6 +85,10 @@ const router = createBrowserRouter([
                         path: "/medic/:code",
                         element: <EditMedicament />,
                     },
+                    {
+                        path: "/medic/upload",
+                        element: <Upload />,
+                    },
                 ],
             }
         ],
@@ -92,11 +99,15 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/home-client",
-                element: <Home />,
+                element: <HomeClient />,
             },
             {
                 path: "/order",
                 element: <Order />,
+            },
+            {
+                path: "/checkout",
+                element: <Checkout />,
             },
             {
                 path: "/gard-client",

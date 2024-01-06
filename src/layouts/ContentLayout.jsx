@@ -49,6 +49,10 @@ export default function ContentLayout() {
             name: "Edit Medicament"
         },
         {
+            path: `/medic/upload`,
+            name: "Upload Image Medicament"
+        },
+        {
             path: "/pharmacy",
             name: "Pharmacy"
         },
