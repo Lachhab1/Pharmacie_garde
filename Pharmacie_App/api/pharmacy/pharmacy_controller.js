@@ -11,6 +11,7 @@ const {
   getPeriodes,
   deletePharmacyGarde,
   getPharmacyExceptGarde,
+  getPharmaciesByDistance
 } = require("./pharmacy_services");
 //const { v4: uuidv4 } = require('uuid');
 
@@ -219,7 +220,10 @@ module.exports = {
   getGardePharmacieByDistance: (req, res) => {
     const latReference = parseFloat(req.params.lat); // Use req.params.lat for latitude
     const lonReference = parseFloat(req.params.lon); // Use req.params.lon for longitude
-
+    console.log("lat")
+    console.log(latReference);
+    console.log("lng")
+    console.log(lonReference);
     if (isNaN(latReference) || isNaN(lonReference)) {
       return res.status(400).json({
         success: 0,
@@ -227,7 +231,7 @@ module.exports = {
       });
     }
 
-    getPharmacyDeGardeByDistance(latReference, lonReference, (error, pharmacies) => {
+    getPharmaciesByDistance(latReference, lonReference, (error, pharmacies) => {
       if (error) {
         console.error(error);
         return res.status(500).json({
