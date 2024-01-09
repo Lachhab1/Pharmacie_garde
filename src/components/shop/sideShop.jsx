@@ -108,7 +108,7 @@ export default function Side({ sideOpen, setsideOpen }) {
                                         <div className="mt-6">
                                             <a
                                                 href="/checkout"
-                                                className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                                                className="flex items-center justify-center rounded-md border border-transparent bg-primary px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-green-900"
                                             >
                                                 Checkout
                                             </a>
@@ -118,7 +118,7 @@ export default function Side({ sideOpen, setsideOpen }) {
                                                 or{' '}
                                                 <button
                                                     type="button"
-                                                    className="font-medium text-indigo-600 hover:text-indigo-500"
+                                                    className="font-medium text-primary hover:text-green-500"
                                                     onClick={() => setsideOpen(false)}
                                                 >
                                                     Continue Shopping<span aria-hidden="true"> &rarr;</span>

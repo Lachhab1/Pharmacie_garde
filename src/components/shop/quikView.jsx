@@ -81,7 +81,7 @@ export default function QuickView({ open, setOpen, medecine }) {
                                             <form>
                                                 <div className="mt-6">
                                                     <button
-                                                        className="w-full bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500"
+                                                        className="w-full bg-primary border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-secondary-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-offset-primary"
                                                         onClick={() => {
                                                             addToPanier(medecine)
                                                         }}
